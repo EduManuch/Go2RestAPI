@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "1c0f9f5d-417e-4b6c-8dbd-880008c2c1a3",
+		"name": "Calculator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17472513"
+	},
+	"item": [
+		{
+			"name": "Get Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}{{port}}/info/",
+					"host": [
+						"{{host}}{{port}}"
+					],
+					"path": [
+						"info",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get First number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}{{port}}/first",
+					"host": [
+						"{{host}}{{port}}"
+					],
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get second number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}{{port}}/second",
+					"host": [
+						"{{host}}{{port}}"
+					],
+					"path": [
+						"second"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Add",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}{{port}}/add",
+					"host": [
+						"{{host}}{{port}}"
+					],
+					"path": [
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sub",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}{{port}}/sub/",
+					"host": [
+						"{{host}}{{port}}"
+					],
+					"path": [
+						"sub",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Mul",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}{{port}}/mul/",
+					"host": [
+						"{{host}}{{port}}"
+					],
+					"path": [
+						"mul",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Div",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}{{port}}/div/",
+					"host": [
+						"{{host}}{{port}}"
+					],
+					"path": [
+						"div",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

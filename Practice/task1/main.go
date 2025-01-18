@@ -26,6 +26,7 @@ GET http://127.0.0.1:1234/div
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"math/rand/v2"
@@ -33,6 +34,13 @@ import (
 
 	"github.com/gorilla/mux"
 )
+
+type Nums struct {
+	First      int    `json:"first"`
+	Second     int    `json:"second"`
+	Result     int    `json:"result"`
+	ErrMessage string `json:"error"`
+}
 
 func GetInfo(w http.ResponseWriter, r *http.Request) {
 	txt := `
@@ -49,50 +57,86 @@ func GetInfo(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, txt)
 }
 
-func GetFirst(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>first num is: %d</h1>", rand.IntN(100))
+func (n *Nums) GetFirst(w http.ResponseWriter, r *http.Request) {
+	n.ErrMessage = ""
+	n.First = rand.IntN(100)
+	js, err := json.Marshal(n)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, "<h1>FIRST: %d</h1><h2>%s</h2>", n.First, js)
 
 }
 
-func GetSecond(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>second num is: %d</h1>", rand.IntN(100))
+func (n *Nums) GetSecond(w http.ResponseWriter, r *http.Request) {
+	n.ErrMessage = ""
+	n.Second = rand.IntN(100)
+	js, err := json.Marshal(n)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, "<h1>SECOND: %d</h1><h2>%s</h2>", n.Second, js)
 
 }
 
-func GetAdd(w http.ResponseWriter, r *http.Request) {
-	res := rand.IntN(100) + rand.IntN(100)
-	fmt.Fprintf(w, "<h1>Add result: %d</h1>", res)
-
+func (n *Nums) GetAdd(w http.ResponseWriter, r *http.Request) {
+	n.ErrMessage = ""
+	n.Result = n.First + n.Second
+	js, err := json.Marshal(n)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, "<h1>ADD RESULT: %d</h1><h2>%s</h2>", n.Result, js)
 }
 
-func GetSub(w http.ResponseWriter, r *http.Request) {
-	res := rand.IntN(100) - rand.IntN(100)
-	fmt.Fprintf(w, "<h1>Sub result: %d</h1>", res)
-
+func (n *Nums) GetSub(w http.ResponseWriter, r *http.Request) {
+	n.ErrMessage = ""
+	n.Result = n.First - n.Second
+	js, err := json.Marshal(n)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, "<h1>SUB RESULT: %d</h1><h2>%s</h2>", n.Result, js)
 }
 
-func GetMul(w http.ResponseWriter, r *http.Request) {
-	res := rand.IntN(100) * rand.IntN(100)
-	fmt.Fprintf(w, "<h1>Mul result: %d</h1>", res)
-
+func (n *Nums) GetMul(w http.ResponseWriter, r *http.Request) {
+	n.ErrMessage = ""
+	n.Result = n.First * n.Second
+	js, err := json.Marshal(n)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, "<h1>MUL RESULT: %d</h1><h2>%s</h2>", n.Result, js)
 }
 
-func GetDiv(w http.ResponseWriter, r *http.Request) {
-	res := rand.IntN(100) / rand.IntN(100)
-	fmt.Fprintf(w, "<h1>Div result: %d</h1>", res)
-
+func (n *Nums) GetDiv(w http.ResponseWriter, r *http.Request) {
+	var message string
+	n.ErrMessage = ""
+	if n.Second == 0 {
+		n.ErrMessage = "Деление на ноль запрещено!"
+		message = fmt.Sprintf("<h1>DIV RESULT: %s</h1>", n.ErrMessage)
+	} else {
+		n.Result = n.First / n.Second
+		message = fmt.Sprintf("<h1>DIV RESULT: %d</h1>", n.Result)
+	}
+	js, err := json.Marshal(n)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, message+"<h2>%s</h2>", js)
 }
 
 func main() {
 	fmt.Println("Starting REST API...")
+	nums := Nums{}
 	router := mux.NewRouter()
 	router.HandleFunc("/info", GetInfo)
-	router.HandleFunc("/first", GetFirst)
-	router.HandleFunc("/second", GetSecond)
-	router.HandleFunc("/add", GetAdd)
-	router.HandleFunc("/sub", GetSub)
-	router.HandleFunc("/mul", GetMul)
-	router.HandleFunc("/div", GetDiv)
+	router.HandleFunc("/first", nums.GetFirst)
+	router.HandleFunc("/second", nums.GetSecond)
+	router.HandleFunc("/add", nums.GetAdd)
+	router.HandleFunc("/sub", nums.GetSub)
+	router.HandleFunc("/mul", nums.GetMul)
+	router.HandleFunc("/div", nums.GetDiv)
 	log.Println("Router configured successfully! Let's go!")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

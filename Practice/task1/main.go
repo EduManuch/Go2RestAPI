@@ -26,6 +26,12 @@ GET http://127.0.0.1:1234/add
 GET http://127.0.0.1:1234/sub
 GET http://127.0.0.1:1234/mul
 GET http://127.0.0.1:1234/div
-
-
 */
+
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("pass")
+}

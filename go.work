@@ -4,4 +4,5 @@ use (
 	./Lection2_HTTP_and_REST_API
 	./Lection3_PizzaAPI
 	./Lection4_BooksAPI
+	./Lection5_StandartWebServer
 )

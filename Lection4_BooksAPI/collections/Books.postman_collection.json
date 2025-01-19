@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "f14f0c45-77ad-41af-a948-be2464545a7d",
+		"name": "Books",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17472513"
+	},
+	"item": [
+		{
+			"name": "Get book by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}{{port}}{{prefix}}/book",
+					"host": [
+						"{{host}}{{port}}{{prefix}}"
+					],
+					"path": [
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}{{port}}{{prefix}}/books",
+					"host": [
+						"{{host}}{{port}}{{prefix}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete book by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}{{port}}{{prefix}}/book/2",
+					"host": [
+						"{{host}}{{port}}{{prefix}}"
+					],
+					"path": [
+						"book",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\r\n\t\t\"title\":         \"Lord of the Rings. Vol.1\",\r\n\t\t\"year_published\": 1978,\r\n\t\t\"author\": {\r\n\t\t\t\"name\":     \"J.R\",\r\n\t\t\t\"last_name\": \"Tolkin\",\r\n\t\t\t\"born_year\": 1892\r\n\t\t}\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}{{port}}{{prefix}}/book",
+					"host": [
+						"{{host}}{{port}}{{prefix}}"
+					],
+					"path": [
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change book by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Lord of the Rings. Vol.2\",\n  \"year_published\": 1985\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}{{port}}{{prefix}}/book/1",
+					"host": [
+						"{{host}}{{port}}{{prefix}}"
+					],
+					"path": [
+						"book",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,3 +1,7 @@
 go 1.23.4
 
-use ./Lection3_PizzaAPI
+use (
+	./Lection2_HTTP_and_REST_API
+	./Lection3_PizzaAPI
+	./Lection4_BooksAPI
+)

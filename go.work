@@ -5,4 +5,5 @@ use (
 	./Lection3_PizzaAPI
 	./Lection4_BooksAPI
 	./Lection5_StandartWebServer
+	./Lection6_Database
 )

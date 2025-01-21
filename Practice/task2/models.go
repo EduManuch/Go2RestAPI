@@ -149,8 +149,7 @@ func (ts *TaskSqlReceiver) GetTaskByTagDB(tag string) ([]Task, error) {
 
 func (ts *TaskSqlReceiver) GetTaskByDateDB(y, m, d int) ([]Task, error) {
 	uDate := time.Date(y, time.Month(m), d, 0, 0, 0, 0, time.Local).Unix()
-	uDate2 := time.Date(y, time.Month(m), d, 0, 0, 0, 0, time.Local)
-	log.Default().Println(uDate2)
+
 	rows, err := ts.db.Query("SELECT * FROM tasks WHERE (due - ?) BETWEEN 0 AND 86400;", uDate)
 	defer rows.Close()
 

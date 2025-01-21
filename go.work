@@ -6,4 +6,5 @@ use (
 	./Lection4_BooksAPI
 	./Lection5_StandartWebServer
 	./Lection6_Database
+	./Practice/task2
 )

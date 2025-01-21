@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "a8a0c664-65e5-4e84-b694-23a32366f4b2",
+		"name": "TasksAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17472513"
+	},
+	"item": [
+		{
+			"name": "Get All Tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/tasks/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/tasks/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tasks by Tag",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/tags/api",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tag",
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tasks by Due",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/due/23/10/31",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"due",
+						"23",
+						"10",
+						"31"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post New Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"first task\",\n  \"tags\": [\n    \"go rest api\"\n    ],\n  \"due\": \"2023-10-31T12:58:05Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/tasks/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Tasks",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/tasks/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/tasks/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
